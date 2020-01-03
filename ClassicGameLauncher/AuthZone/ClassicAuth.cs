@@ -121,7 +121,6 @@ namespace GameLauncher.App.Classes.Auth
 
             try {
                 var sbrwXml = new XmlDocument();
-                MessageBox.Show(serverLoginResponse);
                 sbrwXml.LoadXml(serverLoginResponse);
 
                 XmlNode extraNode;

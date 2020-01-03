@@ -110,6 +110,7 @@ namespace ClassicGameLauncher {
         }
 
         private void button1_Click(object sender, EventArgs e) {
+            Tokens.Clear();
             if (!validateEmail(loginEmailBox.Text)) {
                 actionText.Text = "Please type your email!";
             } else if (String.IsNullOrEmpty(loginPasswordBox.Text)) {
@@ -134,7 +135,7 @@ namespace ClassicGameLauncher {
                     //
                 } else {
                     MessageBox.Show(null, Tokens.Error, "GameLauncher", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    actionText.Text = Tokens.Error.Substring(0, 50);
+                    actionText.Text = (String.IsNullOrEmpty(Tokens.Error)) ? "An error occurred." : Tokens.Error;
                 }
             }
         }
@@ -165,7 +166,7 @@ namespace ClassicGameLauncher {
             Tokens.ServerName = serverText.SelectedItem.ToString();
 
             if (_modernAuthSupport == false) {
-                ClassicAuth.Register(registerEmail.Text, registerPassword.Text, token);
+                ClassicAuth.Register(registerEmail.Text, SHA.HashPassword(registerPassword.Text), token);
             } else {
                 ModernAuth.Register(registerEmail.Text, registerPassword.Text, token);
             }
@@ -251,8 +252,6 @@ namespace ClassicGameLauncher {
                     SimpleJSON.JSONNode IndexJson = SimpleJSON.JSON.Parse(jsonindex);
 
                     CountFilesTotal = IndexJson["entries"].Count;
-
-                    MessageBox.Show(CountFilesTotal.ToString());
 
                     String path = Path.Combine("MODS", MDFive.HashPassword(MainJson["serverID"]).ToLower());
                     if (!Directory.Exists(path)) Directory.CreateDirectory(path);
