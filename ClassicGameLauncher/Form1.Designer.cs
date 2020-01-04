@@ -49,6 +49,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.actionText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -68,7 +69,7 @@
             // 
             this.serverText.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.serverText.FormattingEnabled = true;
-            this.serverText.Location = new System.Drawing.Point(92, 6);
+            this.serverText.Location = new System.Drawing.Point(90, 6);
             this.serverText.Name = "serverText";
             this.serverText.Size = new System.Drawing.Size(195, 21);
             this.serverText.TabIndex = 1;
@@ -85,6 +86,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.linkLabel1);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.loginPasswordBox);
             this.tabPage1.Controls.Add(this.label2);
@@ -100,9 +102,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 123);
+            this.button1.Location = new System.Drawing.Point(6, 126);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(255, 32);
+            this.button1.Size = new System.Drawing.Size(253, 32);
             this.button1.TabIndex = 6;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = true;
@@ -110,7 +112,7 @@
             // 
             // loginPasswordBox
             // 
-            this.loginPasswordBox.Location = new System.Drawing.Point(77, 37);
+            this.loginPasswordBox.Location = new System.Drawing.Point(73, 37);
             this.loginPasswordBox.Name = "loginPasswordBox";
             this.loginPasswordBox.PasswordChar = '*';
             this.loginPasswordBox.Size = new System.Drawing.Size(185, 20);
@@ -119,7 +121,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 40);
+            this.label2.Location = new System.Drawing.Point(4, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 4;
@@ -127,7 +129,7 @@
             // 
             // loginEmailBox
             // 
-            this.loginEmailBox.Location = new System.Drawing.Point(77, 11);
+            this.loginEmailBox.Location = new System.Drawing.Point(73, 11);
             this.loginEmailBox.Name = "loginEmailBox";
             this.loginEmailBox.Size = new System.Drawing.Size(185, 20);
             this.loginEmailBox.TabIndex = 3;
@@ -135,7 +137,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 14);
+            this.label1.Location = new System.Drawing.Point(4, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 2;
@@ -162,7 +164,7 @@
             // 
             // ticketBox
             // 
-            this.ticketBox.Location = new System.Drawing.Point(77, 89);
+            this.ticketBox.Location = new System.Drawing.Point(73, 89);
             this.ticketBox.Name = "ticketBox";
             this.ticketBox.Size = new System.Drawing.Size(185, 20);
             this.ticketBox.TabIndex = 15;
@@ -170,7 +172,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 92);
+            this.label6.Location = new System.Drawing.Point(4, 92);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 14;
@@ -178,7 +180,7 @@
             // 
             // registerPassword2
             // 
-            this.registerPassword2.Location = new System.Drawing.Point(77, 63);
+            this.registerPassword2.Location = new System.Drawing.Point(73, 63);
             this.registerPassword2.Name = "registerPassword2";
             this.registerPassword2.PasswordChar = '*';
             this.registerPassword2.Size = new System.Drawing.Size(185, 20);
@@ -187,7 +189,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 66);
+            this.label5.Location = new System.Drawing.Point(4, 66);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 12;
@@ -195,9 +197,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(7, 123);
+            this.button2.Location = new System.Drawing.Point(6, 126);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(255, 32);
+            this.button2.Size = new System.Drawing.Size(253, 32);
             this.button2.TabIndex = 11;
             this.button2.Text = "Register";
             this.button2.UseVisualStyleBackColor = true;
@@ -205,7 +207,7 @@
             // 
             // registerPassword
             // 
-            this.registerPassword.Location = new System.Drawing.Point(77, 37);
+            this.registerPassword.Location = new System.Drawing.Point(73, 37);
             this.registerPassword.Name = "registerPassword";
             this.registerPassword.PasswordChar = '*';
             this.registerPassword.Size = new System.Drawing.Size(185, 20);
@@ -214,7 +216,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 40);
+            this.label3.Location = new System.Drawing.Point(4, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 9;
@@ -222,7 +224,7 @@
             // 
             // registerEmail
             // 
-            this.registerEmail.Location = new System.Drawing.Point(77, 11);
+            this.registerEmail.Location = new System.Drawing.Point(73, 11);
             this.registerEmail.Name = "registerEmail";
             this.registerEmail.Size = new System.Drawing.Size(185, 20);
             this.registerEmail.TabIndex = 8;
@@ -230,7 +232,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 14);
+            this.label4.Location = new System.Drawing.Point(4, 14);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 7;
@@ -243,6 +245,7 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 227);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(299, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -250,6 +253,17 @@
             // 
             this.actionText.Name = "actionText";
             this.actionText.Size = new System.Drawing.Size(0, 17);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(4, 65);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(107, 13);
+            this.linkLabel1.TabIndex = 7;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "I forgot my password!";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // Form1
             // 
@@ -301,6 +315,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox registerEmail;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

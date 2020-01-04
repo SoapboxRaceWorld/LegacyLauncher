@@ -1,4 +1,5 @@
-﻿using GameLauncher.App.Classes.Auth;
+﻿using GameLauncher.App.Classes;
+using GameLauncher.App.Classes.Auth;
 using GameLauncher.App.Classes.HashPassword;
 using GameLauncher.App.Classes.ModNetReloaded;
 using GameLauncher.HashPassword;
@@ -445,6 +446,35 @@ namespace ClassicGameLauncher {
                     actionText.Text = "Deprecated modnet detected. Aborting...";
                     launchGame();
                 }
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+            string send = Prompt.ShowDialog("Please specify your email address.", "LegacyLauncher");
+
+            if (send != String.Empty) {
+                String responseString;
+                try {
+                    Uri resetPasswordUrl = new Uri(serverText.SelectedValue.ToString() + "/RecoveryPassword/forgotPassword");
+
+                    var request = (HttpWebRequest)System.Net.WebRequest.Create(resetPasswordUrl);
+                    var postData = "email=" + send;
+                    var data = Encoding.ASCII.GetBytes(postData);
+                    request.Method = "POST";
+                    request.ContentType = "application/x-www-form-urlencoded";
+                    request.ContentLength = data.Length;
+
+                    using (var stream = request.GetRequestStream()) {
+                        stream.Write(data, 0, data.Length);
+                    }
+
+                    var response = (HttpWebResponse)request.GetResponse();
+                    responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                } catch {
+                    responseString = "Failed to send email!";
+                }
+
+                MessageBox.Show(null, responseString, "GameLauncher", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

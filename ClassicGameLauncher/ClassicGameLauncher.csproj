@@ -60,6 +60,7 @@
     <Compile Include="ModNetReloaded\ElectronModNet.cs" />
     <Compile Include="ModNetReloaded\ModNetReloaded.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Prompt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SHA.cs" />
     <Compile Include="SimpleJSON.cs" />
