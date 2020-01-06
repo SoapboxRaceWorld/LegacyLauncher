@@ -227,14 +227,34 @@ namespace ClassicGameLauncher {
         }
 
         public void DoModNetJob() {
+            File.Delete("ModManager.dat");
+
+            if (!Directory.Exists("modules")) Directory.CreateDirectory("modules");
+            if (!Directory.Exists("scripts")) Directory.CreateDirectory("scripts");
+            String[] GlobalFiles = new string[] { "dinput8.dll", "global.ini" };
+            String[] ModNetReloadedFiles = new string[] { "7z.dll", "PocoFoundation.dll", "PocoNet.dll", "ModLoader.asi" };
+            String[] ModNetLegacyFiles = new string[] { "modules/udpcrc.soapbox.module", "modules/udpcrypt1.soapbox.module", "modules/udpcrypt2.soapbox.module", "modules/xmppsubject.soapbox.module",
+                    "scripts/global.ini", "lightfx.dll", "ModManager.asi", "global.ini" };
+
+            String[] RemoveAllFiles = GlobalFiles.Concat(ModNetReloadedFiles).Concat(ModNetLegacyFiles).ToArray();
+
+            foreach (string file in RemoveAllFiles) {
+                if (File.Exists(file)) {
+                    try {
+                        File.Delete(file);
+                    } catch {
+                        MessageBox.Show($"File {file} cannot be deleted.", "GameLauncher", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+
             actionText.Text = "Detecting ModNetSupport for " + serverText.SelectedItem.ToString();
             String jsonModNet = ModNetReloaded.ModNetSupported(serverText.SelectedValue.ToString());
 
             if (jsonModNet != String.Empty) {
                 actionText.Text = "ModNetReloaded support detected, downloading required files...";
 
-                String[] newFiles = new string[] { "7z", "PocoFoundation", "PocoNet", "dinput8" };
-
+                string[] newFiles = GlobalFiles.Concat(ModNetReloadedFiles).ToArray();
                 try {
                     try { if (File.Exists("lightfx.dll")) File.Delete("lightfx.dll"); } catch { }
 
@@ -244,6 +264,11 @@ namespace ClassicGameLauncher {
                         Application.DoEvents();
                         newModNetFilesDownload.DownloadFile("https://cdn.soapboxrace.world/modules/" + file + ".dll", file + ".dll");
                     }
+
+                    try {
+                        newModNetFilesDownload.DownloadFile("https://launcher.worldunited.gg/legacy/global.ini", "global.ini");
+                    }
+                    catch { }
 
                     SimpleJSON.JSONNode MainJson = SimpleJSON.JSON.Parse(jsonModNet);
 
@@ -289,24 +314,10 @@ namespace ClassicGameLauncher {
                     MessageBox.Show(ex.Message);
                 }
             } else {
-                //Download LegacyModSystem
-                File.Delete("ModManager.dat");
-
-                if (!Directory.Exists("modules")) Directory.CreateDirectory("modules");
-                if (!Directory.Exists("scripts")) Directory.CreateDirectory("scripts");
-                String[] newFiles2 = new string[] {
-                    "modules/udpcrc.soapbox.module",
-                    "modules/udpcrypt1.soapbox.module",
-                    "modules/udpcrypt2.soapbox.module",
-                    "modules/xmppsubject.soapbox.module",
-                    "scripts/global.ini",
-                    "dinput8.dll",
-                    "lightfx.dll",
-                    "ModManager.asi"
-                };
+                string[] newFiles = GlobalFiles.Concat(ModNetLegacyFiles).ToArray();
 
                 WebClientWithTimeout newModNetFilesDownload = new WebClientWithTimeout();
-                foreach (string file in newFiles2) {
+                foreach (string file in newFiles) {
                     actionText.Text = "Fetching LegacyModnet Files: " + file;
                     Application.DoEvents();
                     newModNetFilesDownload.DownloadFile("http://launcher.worldunited.gg/legacy/" + file, file);

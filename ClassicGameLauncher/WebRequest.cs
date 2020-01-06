@@ -13,7 +13,7 @@ namespace GameLauncherReborn {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(address);
             request.UserAgent = "GameLauncher (+https://github.com/SoapboxRaceWorld/GameLauncher_NFSW)";
             request.Headers["X-HWID"] = Security.FingerPrint.Value();
-            request.Headers["X-UserAgent"] = "LegacyLauncher " + Application.ProductVersion + " WinForms (+https://github.com/metonator/legacylauncher)";
+            request.Headers["X-UserAgent"] = "LegacyLauncher 2.0.8.0 WinForms (+https://github.com/metonator/legacylauncher)";
             request.Timeout = 1000;
 
             return request;
