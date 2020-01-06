@@ -14,11 +14,11 @@ namespace ClassicGameLauncher {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //if (SHA.HashFile("nfsw.exe") != "7C0D6EE08EB1EDA67D5E5087DDA3762182CDE4AC") { 
-            //    MessageBox.Show("Invalid file was detected, please restore original nfsw.exe", "LegacyLauncher", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //} else {
+            if (SHA.HashFile("nfsw.exe") != "7C0D6EE08EB1EDA67D5E5087DDA3762182CDE4AC") { 
+                MessageBox.Show("Invalid file was detected, please restore original nfsw.exe", "LegacyLauncher", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else {
                 Application.Run(new Form1());
-            //}
+            }
         }
 
 
