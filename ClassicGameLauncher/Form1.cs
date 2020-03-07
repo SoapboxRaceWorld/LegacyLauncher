@@ -262,7 +262,7 @@ namespace ClassicGameLauncher {
                     foreach (string file in newFiles) {
                         actionText.Text = "Fetching ModNetReloaded Files: " + file;
                         Application.DoEvents();
-                        newModNetFilesDownload.DownloadFile("https://cdn.soapboxrace.world/modules/" + file + ".dll", file + ".dll");
+                        newModNetFilesDownload.DownloadFile("https://cdn.soapboxrace.world/modules/" + file, file);
                     }
 
                     try {
